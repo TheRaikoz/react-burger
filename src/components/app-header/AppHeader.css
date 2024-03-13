@@ -1,0 +1,17 @@
+.header
+{
+    
+}
+
+
+.menu
+{
+    display: flex;
+    gap: 8px;
+}
+
+.menu-item
+{
+    display: flex;
+    gap: 8px;
+}
