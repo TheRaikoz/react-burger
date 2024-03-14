@@ -2,32 +2,32 @@ import {Logo} from '@ya.praktikum/react-developer-burger-ui-components'
 import {BurgerIcon} from '@ya.praktikum/react-developer-burger-ui-components'
 import {ListIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import {ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components'
-import './AppHeader.css';
+import AppHeaderStyles from './AppHeader.module.css';
 
-export default function AppHeader() {
+export default function appHeader() {
     return (
-      <div style={{ backgroundColor: '#1C1C21', color: 'white' }} className="p-4">
-        <div className='menu'>
-          <div className='menu-item'>
-            <BurgerIcon type="primary"></BurgerIcon>
-            <p className="text text_type_main-small">Конструктор</p>
+      <div className={AppHeaderStyles.header}>
+        <div className={AppHeaderStyles.menu}>
+          <div className={AppHeaderStyles.leftButtons}>
+            <div className={AppHeaderStyles.menuItem}>
+              <BurgerIcon type="primary"></BurgerIcon>
+              <p className={"text text_type_main-small"}>Конструктор</p>
+            </div>
+            <div className={AppHeaderStyles.menuItem}>
+              <ListIcon type="secondary"></ListIcon>
+              <p className={"text_color_inactive"}>Лента заказов</p>
+            </div>
           </div>
-          <div className='menu-item'>
-            <ListIcon type="primary"></ListIcon>
-            <p className="text text_type_main-small">Лента заказов</p>
+          <div className={AppHeaderStyles.logo}>
+          <Logo/>
+          </div>
+          <div className={AppHeaderStyles.rightButtons}>
+            <div className={AppHeaderStyles.menuItem}>
+              <ProfileIcon type="secondary"></ProfileIcon>
+              <p className={"text_color_inactive"}>Личный кабинет</p>
+            </div>
           </div>
         </div> 
-        <Logo/>
-        <div className='menu' style={{ justifyContent: 'flex-end'}}>
-          <div className='menu-item'>
-            <ProfileIcon type="primary"></ProfileIcon>
-            <p className="text text_type_main-small">Личный кабинет</p>
-          </div>
-        </div>
-
-
-
-        
       </div>
     )
   }

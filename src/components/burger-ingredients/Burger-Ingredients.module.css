@@ -1,0 +1,16 @@
+.container
+{
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+}
+.tabParent
+{ 
+    margin-top: 20px; 
+    display: flex;
+}
+.Ingredients
+{
+    display: flex;
+}
