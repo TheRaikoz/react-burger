@@ -1,0 +1,13 @@
+.price
+{
+    display: flex;
+    justify-content: right;
+}
+.burgerMidle
+{
+    display: 'flex';
+    justify-content: 'center';
+    gap: '10px';
+    max-height: 465px;
+    flex-wrap: wrap;
+}

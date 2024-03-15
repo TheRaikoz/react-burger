@@ -1,30 +1,29 @@
-.container
-{
+.container {
     margin-top: 40px;
     justify-content: center;
     align-items: center;
     width: 600px;
 }
-.tabParent
-{ 
-    margin-top: 20px; 
+
+.tabParent {
+    margin-top: 20px;
     display: flex;
 }
-.Ingredients
-{
+
+.Ingredients {
     display: flex;
     width: 600px;
     flex-wrap: wrap;
     gap: 10px;
 }
-.IngredientsContainer
-{
+
+.IngredientsContainer {
     width: 600px;
     height: 756px;
     overflow-y: auto;
     overflow-x: hidden;
 }
-.IngredientsTitle
-{
+
+.IngredientsTitle {
     display: flex;
 }

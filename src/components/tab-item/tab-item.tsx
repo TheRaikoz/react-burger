@@ -1,4 +1,4 @@
-import {Counter,CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
+import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import style from './tab-item.module.css';
 
 interface TabItemProps {
@@ -7,9 +7,8 @@ interface TabItemProps {
     name: string;
 }
 
-export default function tabItem({ img, cost, name }: TabItemProps)
-{
-    return(
+export default function tabItem({ img, cost, name }: TabItemProps) {
+    return (
         <div className={style.container}>
             <div className={style.counter}>
                 <Counter count={1} size="default" extraClass="m-1" />
