@@ -13,4 +13,18 @@
 .Ingredients
 {
     display: flex;
+    width: 600px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.IngredientsContainer
+{
+    width: 600px;
+    height: 756px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.IngredientsTitle
+{
+    display: flex;
 }

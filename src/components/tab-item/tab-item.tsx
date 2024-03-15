@@ -1,16 +1,25 @@
 import {Counter,CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
+import style from './tab-item.module.css';
 
-export default function tabItem()
+interface TabItemProps {
+    img: string;
+    cost: number;
+    name: string;
+}
+
+export default function tabItem({ img, cost, name }: TabItemProps)
 {
     return(
-        <div>
-            <Counter count={200} size="default" extraClass="m-1" />
-            <img src='https://code.s3.yandex.net/react/code/bun-02.png'></img>
-            <div>
-            <p className="text text_type_main-small">20</p>
-            <CurrencyIcon type="primary" />
+        <div className={style.container}>
+            <div className={style.counter}>
+                <Counter count={1} size="default" extraClass="m-1" />
             </div>
-            <p className="text text_type_main-default">Какаято булка</p>
+            <img src={img} className={`${style.image} pl-4 pr-4`} alt="item-image"></img>
+            <div className={`${style.cost} p-1`}>
+                <p className="text text_type_main-small">{cost}</p>
+                <CurrencyIcon type="primary" />
+            </div>
+            <p className="text text_type_main-default">{name}</p>
         </div>
     );
 }
