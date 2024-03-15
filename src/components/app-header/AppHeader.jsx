@@ -4,9 +4,9 @@ import { ListIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { ProfileIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import AppHeaderStyles from "./AppHeader.module.css";
 
-export default function appHeader() {
+export default function AppHeader() {
   return (
-    <div className={AppHeaderStyles.header}>
+    <header className={AppHeaderStyles.header}>
       <div className={AppHeaderStyles.menu}>
         <div className={AppHeaderStyles.leftButtons}>
           <div className={AppHeaderStyles.menuItem}>
@@ -28,6 +28,6 @@ export default function appHeader() {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

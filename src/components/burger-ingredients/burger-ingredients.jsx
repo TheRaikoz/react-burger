@@ -3,13 +3,7 @@ import style from "./Burger-Ingredients.module.css";
 import TabItem from "../tab-item/tab-item";
 import React from "react";
 import PropTypes from "prop-types";
-
-const BurgerIngredientsPropTypes = PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
-  price: PropTypes.number,
-  name: PropTypes.string.isRequired,
-});
+import { burgerPropTypes } from "../../utils/Types";
 
 export const BurgerIngredients = (props) => {
   const { data } = props;
@@ -99,5 +93,5 @@ export const BurgerIngredients = (props) => {
 export default BurgerIngredients;
 
 BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(BurgerIngredientsPropTypes).isRequired,
+  data: PropTypes.arrayOf(burgerPropTypes).isRequired,
 };

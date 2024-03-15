@@ -1,20 +1,26 @@
-.price
-{
-    display: flex;
-    justify-content: right;
+.price {
+  display: flex;
+  justify-content: right;
+  gap: 40px;
 }
-.burgerMidle
-{
-    display: 'flex';
-    justify-content: 'center';
-    max-height: 465px;
-    flex-wrap: wrap;
-    overflow-y: auto;
-    overflow-x: hidden;
+.priceContainer {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 4px;
+}
+
+.burgerMidle {
+  display: "flex";
+  justify-content: "center";
+  max-height: 465px;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .container {
-    margin-top: 40px;
-    justify-content: center;
-    align-items: center;
-    width: 600px;
+  margin-top: 40px;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
 }

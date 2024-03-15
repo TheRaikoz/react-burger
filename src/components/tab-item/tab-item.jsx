@@ -10,11 +10,7 @@ export default function tabItem({ img, cost, name }) {
       <div className={style.counter}>
         <Counter count={1} size="default" extraClass="m-1" />
       </div>
-      <img
-        src={img}
-        className={`${style.image} pl-4 pr-4`}
-        alt="item-image"
-      ></img>
+      <img src={img} className={`${style.image} pl-4 pr-4`} alt={name}></img>
       <div className={`${style.cost} p-1`}>
         <p className="text text_type_main-small">{cost}</p>
         <CurrencyIcon type="primary" />

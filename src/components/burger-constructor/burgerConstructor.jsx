@@ -6,13 +6,7 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import style from "./burgerConstructor.module.css";
 import PropTypes from "prop-types";
-
-const burgerConstructorPropTypes = PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number,
-  img: PropTypes.string.isRequired,
-});
+import { burgerPropTypes } from "../../utils/Types";
 
 export const burgerConstructor = (props) => {
   const { data } = props;
@@ -22,9 +16,9 @@ export const burgerConstructor = (props) => {
         <ConstructorElement
           type="top"
           isLocked={true}
-          text={data[0].name}
+          text={data[0].name + " (Верх)"}
           price={data[0].price}
-          thumbnail={data[0].img}
+          thumbnail={data[0].image}
         />
         <div className={`${style.burgerMidle} pb-4`}>
           {data.map((item, index) => {
@@ -32,12 +26,12 @@ export const burgerConstructor = (props) => {
             } else if (index === data.length - 1) {
             } else {
               return (
-                <div className="pt-4 mr-5">
+                <div className="pt-4 mr-5" key={index}>
                   <DragIcon type="primary" />
                   <ConstructorElement
                     text={item.name}
                     price={item.price}
-                    thumbnail={item.img}
+                    thumbnail={item.image}
                   />
                 </div>
               );
@@ -47,16 +41,13 @@ export const burgerConstructor = (props) => {
         <ConstructorElement
           type="bottom"
           isLocked={true}
-          text={data[data.length - 1].name}
+          text={data[data.length - 1].name + " (Низ)"}
           price={data[data.length - 1].price}
-          thumbnail={data[data.length - 1].img}
+          thumbnail={data[data.length - 1].image}
         />
       </div>
-      <div className={`${style.price} pt-10`}>
-        <div
-          className="pr-10"
-          style={{ display: "flex", gap: "10px", alignItems: "center" }}
-        >
+      <div className={`${style.price} pt-10 pr-10`}>
+        <div className={style.priceContainer}>
           <p className="text text_type_main-large">
             {data.reduce((acc, item) => acc + item.price, 0)}
           </p>
@@ -73,5 +64,5 @@ export const burgerConstructor = (props) => {
 export default burgerConstructor;
 
 burgerConstructor.propTypes = {
-  data: PropTypes.arrayOf(burgerConstructorPropTypes).isRequired,
+  data: PropTypes.arrayOf(burgerPropTypes).isRequired,
 };
