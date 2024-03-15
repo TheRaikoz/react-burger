@@ -7,7 +7,14 @@
 {
     display: 'flex';
     justify-content: 'center';
-    gap: '10px';
     max-height: 465px;
     flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.container {
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
 }
