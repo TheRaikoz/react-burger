@@ -8,12 +8,10 @@ import style from "./App.module.css";
 function App() {
   return (
     <div className={style.App}>
-      <header>
-        <AppHeader />
-      </header>
+      <AppHeader />
       <main className={style.container}>
-        <BurgerIngredients data={data}></BurgerIngredients>
-        <BurgerConstructor data={items}></BurgerConstructor>
+        <BurgerIngredients data={data} />
+        <BurgerConstructor data={items} />
       </main>
     </div>
   );
