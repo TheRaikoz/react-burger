@@ -1,8 +1,8 @@
-import AppHeader from "../app-header/AppHeader";
+import AppHeader from "../AppHeader/AppHeader";
 import { data } from "../../utils/data";
 import { items } from "../../utils/constructorData";
-import BurgerIngredients from "../burger-ingredients/burger-ingredients";
-import BurgerConstructor from "../burger-constructor/burgerConstructor";
+import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
+import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import style from "./App.module.css";
 
 function App() {

@@ -8,7 +8,7 @@ import style from "./burgerConstructor.module.css";
 import PropTypes from "prop-types";
 import { burgerPropTypes } from "../../utils/Types";
 
-export const burgerConstructor = (props) => {
+export const BurgerConstructor = (props) => {
   const { data } = props;
   return (
     <div className={`${style.container} pt-25`}>
@@ -61,8 +61,8 @@ export const burgerConstructor = (props) => {
   );
 };
 
-export default burgerConstructor;
+export default BurgerConstructor;
 
-burgerConstructor.propTypes = {
+BurgerConstructor.propTypes = {
   data: PropTypes.arrayOf(burgerPropTypes).isRequired,
 };
