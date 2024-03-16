@@ -2,7 +2,7 @@ import {
   Counter,
   CurrencyIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import style from "./tab-item.module.css";
+import style from "./TabItem.module.css";
 
 export default function tabItem({ img, cost, name }) {
   return (
