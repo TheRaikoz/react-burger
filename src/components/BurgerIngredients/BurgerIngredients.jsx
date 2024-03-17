@@ -8,12 +8,16 @@ import { burgerPropTypes } from "../../utils/Types";
 export class BurgerIngredients extends React.Component {
   constructor(props) {
     super(props);
-    this.data = props.data;
-    this.curentTab = "bun";
+    this.state = {
+      data: props.data,
+      curentTab: "bun",
+      setTab: this.setTab,
+    };
   }
 
   setCurentTab = (tab) => {
-    this.state.curentTab = tab;
+    this.setState({ curentTab: tab });
+    console.log(this.curentTab);
   };
 
   setTab = (tab) => {
@@ -23,30 +27,19 @@ export class BurgerIngredients extends React.Component {
   };
 
   render() {
+    const { data, setTab, curentTab } = this.state;
     return (
       <div className={style.container}>
         <p className="text text_type_main-large">Соберите бургер</p>
 
         <div className={style.tabParent}>
-          <Tab
-            active={this.curentTab === "bun"}
-            value="bun"
-            onClick={this.setTab}
-          >
+          <Tab active={curentTab === "bun"} value="bun" onClick={setTab}>
             Булки
           </Tab>
-          <Tab
-            active={this.curentTab === "sauce"}
-            value="sauce"
-            onClick={this.setTab}
-          >
+          <Tab active={curentTab === "sauce"} value="sauce" onClick={setTab}>
             Соусы
           </Tab>
-          <Tab
-            active={this.curentTab === "main"}
-            value="main"
-            onClick={this.setTab}
-          >
+          <Tab active={curentTab === "main"} value="main" onClick={setTab}>
             Начинки
           </Tab>
         </div>
@@ -57,7 +50,7 @@ export class BurgerIngredients extends React.Component {
             </p>
           </div>
           <div className={style.Ingredients}>
-            {this.data.map((item) => {
+            {data.map((item) => {
               if (item.type === "bun")
                 return (
                   <TabItem
@@ -75,7 +68,7 @@ export class BurgerIngredients extends React.Component {
             </p>
           </div>
           <div className={style.Ingredients}>
-            {this.data.map((item) => {
+            {data.map((item) => {
               if (item.type === "sauce")
                 return (
                   <TabItem
@@ -93,7 +86,7 @@ export class BurgerIngredients extends React.Component {
             </p>
           </div>
           <div className={style.Ingredients}>
-            {this.data.map((item) => {
+            {data.map((item) => {
               if (item.type === "main")
                 return (
                   <TabItem

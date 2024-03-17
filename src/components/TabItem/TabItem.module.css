@@ -1,21 +1,17 @@
-.container
-{
-    width: 272px;
-    height: 208px;
+.container {
+  width: 272px;
+  height: 208px;
 }
-.image
-{
-    width: 240px;
-    height: 120px;    
+.image {
+  width: 240px;
+  height: 120px;
 }
-.cost
-{
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    gap: 4px;
+.cost {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
 }
-.counter
-{
-    position: relative;
+.counter {
+  position: relative;
 }
