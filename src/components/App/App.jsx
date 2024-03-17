@@ -4,6 +4,8 @@ import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import style from "./App.module.css";
 import React from "react";
 
+const DOMAIN_URL = "https://norma.nomoreparties.space";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,7 @@ class App extends React.Component {
 
   fetchData = () => {
     this.setState({ isLoading: true });
-    fetch("https://norma.nomoreparties.space/api/ingredients")
+    fetch(`${DOMAIN_URL}/api/ingredients`)
       .then((response) => response.json())
       .then((data) =>
         this.setState({
