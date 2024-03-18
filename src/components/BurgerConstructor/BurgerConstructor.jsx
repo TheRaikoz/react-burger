@@ -78,7 +78,7 @@ export class BurgerConstructor extends React.Component {
               } else if (index === this.data.length - 1) {
               } else {
                 return (
-                  <div className="pt-4 mr-5" key={index}>
+                  <div className="pt-4 mr-2" key={index}>
                     <DragIcon type="primary" />
                     <ConstructorElement
                       text={item.name}
