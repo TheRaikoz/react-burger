@@ -2,7 +2,6 @@ import {
   Button,
   ConstructorElement,
   CurrencyIcon,
-  DragIcon,
   CloseIcon,
   CheckMarkIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
@@ -11,6 +10,7 @@ import PropTypes from "prop-types";
 import { burgerPropTypes } from "../../utils/Types";
 import React from "react";
 import Modal from "../Modal/Modal";
+import BurgerMiddle from "../BurgerMiddle/BurgerMiddle";
 
 export class BurgerConstructor extends React.Component {
   constructor(props) {
@@ -70,23 +70,14 @@ export class BurgerConstructor extends React.Component {
             isLocked={true}
             text={this.data[0].name + " (Верх)"}
             price={this.data[0].price}
-            thumbnail={this.data[0].image}
+            thumbnail={this.data[0].image_mobile}
           />
-          <div className={`${style.burgerMidle} pb-4`}>
+          <div className={style.burgerMiddle}>
             {this.data.map((item, index) => {
               if (index === 0) {
               } else if (index === this.data.length - 1) {
               } else {
-                return (
-                  <div className="pt-4 mr-2" key={index}>
-                    <DragIcon type="primary" />
-                    <ConstructorElement
-                      text={item.name}
-                      price={item.price}
-                      thumbnail={item.image}
-                    />
-                  </div>
-                );
+                return <BurgerMiddle item={item} key={index} />;
               }
             })}
           </div>
@@ -95,7 +86,7 @@ export class BurgerConstructor extends React.Component {
             isLocked={true}
             text={this.data[this.data.length - 1].name + " (Низ)"}
             price={this.data[this.data.length - 1].price}
-            thumbnail={this.data[this.data.length - 1].image}
+            thumbnail={this.data[this.data.length - 1].image_mobile}
           />
         </div>
         <div className={`${style.price} pt-10 pr-10`}>

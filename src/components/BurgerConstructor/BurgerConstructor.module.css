@@ -9,21 +9,21 @@
   align-items: center;
   gap: 4px;
 }
-
-.burgerMidle {
-  display: "flex";
-  justify-content: "center";
-  align-items: center;
-  max-height: 465px;
-  flex-wrap: wrap;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
 .container {
   margin-top: 40px;
   justify-content: center;
   align-items: center;
   width: 600px;
+}
+.burgerMiddle {
+  display: "flex";
+  justify-content: "center";
+  align-items: center;
+  max-height: 465px;
+  width: 570px;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .modal {
   position: fixed;

@@ -18,15 +18,17 @@ export class BurgerIngredients extends React.Component {
       curentTab: "bun",
       setTab: this.setTab,
       visible: false,
+      item: null,
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  handleOpenModal() {
+  handleOpenModal(id) {
+    const item = this.state.data.find((item) => item._id === id);
+    this.setState({ item: item });
     this.setState({ visible: true });
   }
-
   handleCloseModal() {
     this.setState({ visible: false });
   }
@@ -42,34 +44,54 @@ export class BurgerIngredients extends React.Component {
     if (element) element.scrollIntoView({ behavior: "smooth" });
   };
   render() {
-    const modal = (
+    const modal = this.state.item ? (
       <Modal onClose={this.handleCloseModal}>
         <div className={style.modal}>
           <div className={`${style.close} pt-7 pr-10`}>
             <CloseIcon type="primary" onClick={this.handleCloseModal} />
           </div>
           <p className="text text_type_main-large pt-10">Детали ингредиента</p>
-          <img src="https://code.s3.yandex.net/react/code/bun-01.png" />
+          <img src={this.state.item.image_large} alt={this.state.item.name} />
           <p className="text text_type_main-medium pt-4">
-            Биокотлета из марсианской Магнолии
+            {this.state.item.name}
           </p>
           <div className={`${style.info} pt-8`}>
-            <p className="text text_type_main-small text_color_inactive pr-5">
-              Калории,ккал
-            </p>
-            <p className="text text_type_main-small text_color_inactive pr-5">
-              Белки, г
-            </p>
-            <p className="text text_type_main-small text_color_inactive pr-5">
-              Жиры, г
-            </p>
-            <p className="text text_type_main-small text_color_inactive pr-5">
-              Углеводы, г
-            </p>
+            <div className={`${style.infoItem} pr-5`}>
+              <p className="text text_type_main-medium text_color_inactive">
+                Калории,ккал
+              </p>
+              <p className="text text_type_digits-medium text_color_inactive">
+                {this.state.item.calories}
+              </p>
+            </div>
+            <div className={`${style.infoItem} pr-5`}>
+              <p className="text text_type_main-medium text_color_inactive">
+                Белки, г
+              </p>
+              <p className="text text_type_digits-medium text_color_inactive">
+                {this.state.item.proteins}
+              </p>
+            </div>
+            <div className={`${style.infoItem} pr-5`}>
+              <p className="text text_type_main-medium text_color_inactive">
+                Жиры, г
+              </p>
+              <p className="text text_type_digits-medium text_color_inactive">
+                {this.state.item.fat}
+              </p>
+            </div>
+            <div className={`${style.infoItem} pr-5`}>
+              <p className="text text_type_main-medium text_color_inactive">
+                Углеводы, г
+              </p>
+              <p className="text text_type_digits-medium text_color_inactive">
+                {this.state.item.carbohydrates}
+              </p>
+            </div>
           </div>
         </div>
       </Modal>
-    );
+    ) : null;
 
     const { data, setTab, curentTab } = this.state;
     return (
@@ -103,7 +125,7 @@ export class BurgerIngredients extends React.Component {
                     img={item.image}
                     cost={item.price}
                     name={item.name}
-                    onClick={this.handleOpenModal}
+                    onClick={() => this.handleOpenModal(item._id)}
                   />
                 );
             })}
@@ -122,7 +144,7 @@ export class BurgerIngredients extends React.Component {
                     img={item.image}
                     cost={item.price}
                     name={item.name}
-                    onClick={this.handleOpenModal}
+                    onClick={() => this.handleOpenModal(item._id)}
                   />
                 );
             })}
@@ -141,7 +163,7 @@ export class BurgerIngredients extends React.Component {
                     img={item.image}
                     cost={item.price}
                     name={item.name}
-                    onClick={this.handleOpenModal}
+                    onClick={() => this.handleOpenModal(item._id)}
                   />
                 );
             })}
