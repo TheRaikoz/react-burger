@@ -15,7 +15,7 @@ export default class tabItem extends React.Component {
 
   render() {
     return (
-      <div className={style.container}>
+      <div className={style.container} onClick={this.props.onClick}>
         <div className={style.counter}>
           <Counter count={1} size="default" extraClass="m-1" />
         </div>

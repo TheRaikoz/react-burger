@@ -1,5 +1,4 @@
 .container {
-  margin-top: 40px;
   justify-content: center;
   align-items: center;
   width: 600px;
@@ -19,11 +18,34 @@
 
 .IngredientsContainer {
   width: 600px;
-  height: 756px;
+  height: 688px;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 .IngredientsTitle {
   display: flex;
+}
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: fixed;
+  border-radius: 40px;
+  height: 718px;
+  width: 720px;
+  z-index: 6;
+  top: 20%;
+  left: 30%;
+  background-color: #1c1c21;
+  justify-content: center;
+  align-items: center;
+}
+
+.close {
+  display: flex;
+  flex-direction: row-reverse;
 }

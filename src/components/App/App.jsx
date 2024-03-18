@@ -17,7 +17,6 @@ class App extends React.Component {
       error: null,
     };
   }
-
   componentDidMount() {
     this.fetchData();
   }
@@ -48,7 +47,8 @@ class App extends React.Component {
   };
 
   render() {
-    const { data, items, isLoading, hasError, error } = this.state;
+    const { data, items, isLoading, hasError, error, handleOpenModal } =
+      this.state;
     return (
       <div className={style.App}>
         <AppHeader />
@@ -59,6 +59,7 @@ class App extends React.Component {
             isLoading: isLoading,
             hasError: hasError,
             error: error,
+            handleOpenModal,
           })}
           {CheckError({
             component: BurgerConstructor,
@@ -66,6 +67,7 @@ class App extends React.Component {
             isLoading: isLoading,
             hasError: hasError,
             error: error,
+            handleOpenModal,
           })}
         </main>
       </div>
@@ -79,6 +81,7 @@ function CheckError({
   isLoading,
   hasError,
   error,
+  onClick,
 }) {
   return (
     <>
@@ -87,7 +90,9 @@ function CheckError({
       {!isLoading &&
         !hasError &&
         burgerData !== undefined &&
-        !!burgerData.length && <Component data={burgerData} />}
+        !!burgerData.length && (
+          <Component data={burgerData} onClick={onClick} />
+        )}
     </>
   );
 }

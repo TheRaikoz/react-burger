@@ -24,3 +24,27 @@
   align-items: center;
   width: 600px;
 }
+.modal {
+  position: fixed;
+  border-radius: 40px;
+  height: 718px;
+  width: 720px;
+  z-index: 6;
+  top: 20%;
+  left: 30%;
+  background-color: #1c1c21;
+  justify-content: center;
+  align-items: center;
+}
+
+.close {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.orderNumber {
+  color: #ffffff;
+  text-shadow: 0 0 20px #4040fa, 0 0 80px #4141fd;
+}
+.done {
+  scale: 2;
+}

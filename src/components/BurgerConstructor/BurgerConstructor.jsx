@@ -3,21 +3,67 @@ import {
   ConstructorElement,
   CurrencyIcon,
   DragIcon,
+  CloseIcon,
+  CheckMarkIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import style from "./BurgerConstructor.module.css";
 import PropTypes from "prop-types";
 import { burgerPropTypes } from "../../utils/Types";
 import React from "react";
+import Modal from "../Modal/Modal";
 
 export class BurgerConstructor extends React.Component {
   constructor(props) {
     super(props);
     this.data = props.data;
+    this.state = {
+      visible: false,
+    };
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+
+  handleOpenModal() {
+    this.setState({ visible: true });
+  }
+
+  handleCloseModal() {
+    this.setState({ visible: false });
   }
 
   render() {
+    const modal = (
+      <Modal onClose={this.handleCloseModal}>
+        <div className={style.modal}>
+          <div className={`${style.close} pt-7 pr-10`}>
+            <CloseIcon type="primary" onClick={this.handleCloseModal} />
+          </div>
+          <p
+            className={`${style.orderNumber} text text_type_digits-large pt-10`}
+          >
+            034536
+          </p>
+          <p className="text text_type_main-medium pt-4">
+            идентификатор заказа
+          </p>
+          <div className={`${style.done} pt-15`}>
+            <CheckMarkIcon type="primary" />
+          </div>
+          <div className="pt-30">
+            <p className="text text_type_main-medium">
+              Ваш заказ начали готовить
+            </p>
+            <p className="text text_type_main-medium text_color_inactive pt-2">
+              Дождитесь готовности на орбитальной станции
+            </p>
+          </div>
+        </div>
+      </Modal>
+    );
+
     return (
-      <div className={`${style.container} pt-25`}>
+      <div id="constructor-Root" className={`${style.container} pt-15`}>
+        {this.state.visible && modal}
         <div>
           <ConstructorElement
             type="top"
@@ -59,7 +105,12 @@ export class BurgerConstructor extends React.Component {
             </p>
             <CurrencyIcon type="primary" />
           </div>
-          <Button htmlType="button" type="primary" size="large">
+          <Button
+            htmlType="button"
+            type="primary"
+            size="large"
+            onClick={this.handleOpenModal}
+          >
             Оформить заказ
           </Button>
         </div>

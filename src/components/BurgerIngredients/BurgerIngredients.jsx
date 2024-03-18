@@ -1,9 +1,14 @@
-import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
+import {
+  Tab,
+  CloseIcon,
+  CheckMarkIcon,
+} from "@ya.praktikum/react-developer-burger-ui-components";
 import style from "./BurgerIngredients.module.css";
 import TabItem from "../TabItem/TabItem";
 import React from "react";
 import PropTypes from "prop-types";
 import { burgerPropTypes } from "../../utils/Types";
+import Modal from "../Modal/Modal";
 
 export class BurgerIngredients extends React.Component {
   constructor(props) {
@@ -12,7 +17,18 @@ export class BurgerIngredients extends React.Component {
       data: props.data,
       curentTab: "bun",
       setTab: this.setTab,
+      visible: false,
     };
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+
+  handleOpenModal() {
+    this.setState({ visible: true });
+  }
+
+  handleCloseModal() {
+    this.setState({ visible: false });
   }
 
   setCurentTab = (tab) => {
@@ -25,11 +41,40 @@ export class BurgerIngredients extends React.Component {
     const element = document.getElementById(tab);
     if (element) element.scrollIntoView({ behavior: "smooth" });
   };
-
   render() {
+    const modal = (
+      <Modal onClose={this.handleCloseModal}>
+        <div className={style.modal}>
+          <div className={`${style.close} pt-7 pr-10`}>
+            <CloseIcon type="primary" onClick={this.handleCloseModal} />
+          </div>
+          <p className="text text_type_main-large pt-10">Детали ингредиента</p>
+          <img src="https://code.s3.yandex.net/react/code/bun-01.png" />
+          <p className="text text_type_main-medium pt-4">
+            Биокотлета из марсианской Магнолии
+          </p>
+          <div className={`${style.info} pt-8`}>
+            <p className="text text_type_main-small text_color_inactive pr-5">
+              Калории,ккал
+            </p>
+            <p className="text text_type_main-small text_color_inactive pr-5">
+              Белки, г
+            </p>
+            <p className="text text_type_main-small text_color_inactive pr-5">
+              Жиры, г
+            </p>
+            <p className="text text_type_main-small text_color_inactive pr-5">
+              Углеводы, г
+            </p>
+          </div>
+        </div>
+      </Modal>
+    );
+
     const { data, setTab, curentTab } = this.state;
     return (
-      <div className={style.container}>
+      <div className={`${style.container} pt-10`}>
+        {this.state.visible && modal}
         <p className="text text_type_main-large">Соберите бургер</p>
 
         <div className={style.tabParent}>
@@ -58,6 +103,7 @@ export class BurgerIngredients extends React.Component {
                     img={item.image}
                     cost={item.price}
                     name={item.name}
+                    onClick={this.handleOpenModal}
                   />
                 );
             })}
@@ -76,6 +122,7 @@ export class BurgerIngredients extends React.Component {
                     img={item.image}
                     cost={item.price}
                     name={item.name}
+                    onClick={this.handleOpenModal}
                   />
                 );
             })}
@@ -94,6 +141,7 @@ export class BurgerIngredients extends React.Component {
                     img={item.image}
                     cost={item.price}
                     name={item.name}
+                    onClick={this.handleOpenModal}
                   />
                 );
             })}
