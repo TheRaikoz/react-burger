@@ -8,7 +8,7 @@ import TabItem from "../TabItem/TabItem";
 import React from "react";
 import PropTypes from "prop-types";
 import { burgerPropTypes } from "../../utils/Types";
-import Modal from "../Modal/Modal";
+import IngredientDetails from "../IngredientDetails/IngredientDetails";
 
 export class BurgerIngredients extends React.Component {
   constructor(props) {
@@ -44,59 +44,15 @@ export class BurgerIngredients extends React.Component {
     if (element) element.scrollIntoView({ behavior: "smooth" });
   };
   render() {
-    const modal = this.state.item ? (
-      <Modal onClose={this.handleCloseModal}>
-        <div className={style.modal}>
-          <div className={`${style.close} pt-7 pr-10`}>
-            <CloseIcon type="primary" onClick={this.handleCloseModal} />
-          </div>
-          <p className="text text_type_main-large pt-10">Детали ингредиента</p>
-          <img src={this.state.item.image_large} alt={this.state.item.name} />
-          <p className="text text_type_main-medium pt-4">
-            {this.state.item.name}
-          </p>
-          <div className={`${style.info} pt-8`}>
-            <div className={`${style.infoItem} pr-5`}>
-              <p className="text text_type_main-medium text_color_inactive">
-                Калории,ккал
-              </p>
-              <p className="text text_type_digits-medium text_color_inactive">
-                {this.state.item.calories}
-              </p>
-            </div>
-            <div className={`${style.infoItem} pr-5`}>
-              <p className="text text_type_main-medium text_color_inactive">
-                Белки, г
-              </p>
-              <p className="text text_type_digits-medium text_color_inactive">
-                {this.state.item.proteins}
-              </p>
-            </div>
-            <div className={`${style.infoItem} pr-5`}>
-              <p className="text text_type_main-medium text_color_inactive">
-                Жиры, г
-              </p>
-              <p className="text text_type_digits-medium text_color_inactive">
-                {this.state.item.fat}
-              </p>
-            </div>
-            <div className={`${style.infoItem} pr-5`}>
-              <p className="text text_type_main-medium text_color_inactive">
-                Углеводы, г
-              </p>
-              <p className="text text_type_digits-medium text_color_inactive">
-                {this.state.item.carbohydrates}
-              </p>
-            </div>
-          </div>
-        </div>
-      </Modal>
-    ) : null;
-
     const { data, setTab, curentTab } = this.state;
     return (
       <div className={`${style.container} pt-10`}>
-        {this.state.visible && modal}
+        {this.state.visible && (
+          <IngredientDetails
+            onClose={this.handleCloseModal}
+            item={this.state.item}
+          />
+        )}
         <p className="text text_type_main-large">Соберите бургер</p>
 
         <div className={style.tabParent}>

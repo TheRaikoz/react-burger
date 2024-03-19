@@ -9,8 +9,8 @@ import style from "./BurgerConstructor.module.css";
 import PropTypes from "prop-types";
 import { burgerPropTypes } from "../../utils/Types";
 import React from "react";
-import Modal from "../Modal/Modal";
 import BurgerMiddle from "../BurgerMiddle/BurgerMiddle";
+import OrderDetails from "../OrderDetails/OrderDetails";
 
 export class BurgerConstructor extends React.Component {
   constructor(props) {
@@ -32,38 +32,9 @@ export class BurgerConstructor extends React.Component {
   }
 
   render() {
-    const modal = (
-      <Modal onClose={this.handleCloseModal}>
-        <div className={style.modal}>
-          <div className={`${style.close} pt-7 pr-10`}>
-            <CloseIcon type="primary" onClick={this.handleCloseModal} />
-          </div>
-          <p
-            className={`${style.orderNumber} text text_type_digits-large pt-10`}
-          >
-            034536
-          </p>
-          <p className="text text_type_main-medium pt-4">
-            идентификатор заказа
-          </p>
-          <div className={`${style.done} pt-15`}>
-            <CheckMarkIcon type="primary" />
-          </div>
-          <div className="pt-30">
-            <p className="text text_type_main-medium">
-              Ваш заказ начали готовить
-            </p>
-            <p className="text text_type_main-medium text_color_inactive pt-2">
-              Дождитесь готовности на орбитальной станции
-            </p>
-          </div>
-        </div>
-      </Modal>
-    );
-
     return (
-      <div id="constructor-Root" className={`${style.container} pt-15`}>
-        {this.state.visible && modal}
+      <div className={`${style.container} pt-15`}>
+        {this.state.visible && <OrderDetails onClick={this.handleCloseModal} />}
         <div>
           <ConstructorElement
             type="top"

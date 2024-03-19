@@ -50,7 +50,7 @@ class App extends React.Component {
     const { data, items, isLoading, hasError, error, handleOpenModal } =
       this.state;
     return (
-      <div className={style.App}>
+      <div className={style.App} id="root">
         <AppHeader />
         <main className={style.container}>
           {CheckError({
