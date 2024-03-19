@@ -17,40 +17,38 @@ export default class IngredientDetails extends React.Component {
             <CloseIcon type="primary" onClick={this.props.onClose} />
           </div>
           <div className={style.content}>
-            <p className="text text_type_main-large pt-10">
-              Детали ингредиента
-            </p>
+            <p className="text text_type_main-large">Детали ингредиента</p>
             <img src={this.props.item.image_large} alt={this.props.item.name} />
             <p className="text text_type_main-medium pt-4">
               {this.props.item.name}
             </p>
-            <div className={style.info}>
-              <div className={style.infoItem}>
-                <p className="text text_type_main-medium text_color_inactive">
-                  Калории, ккал
+            <div className={`${style.info} pt-8`}>
+              <div className={`${style.infoItem} pr-5`}>
+                <p className="text text_type_main-default text_color_inactive">
+                  Калории,ккал
                 </p>
                 <p className="text text_type_digits-medium text_color_inactive">
                   {this.props.item.calories}
                 </p>
               </div>
-              <div className={style.infoItem}>
-                <p className="text text_type_main-medium text_color_inactive">
+              <div className={`${style.infoItem} pr-5`}>
+                <p className="text text_type_main-default text_color_inactive">
                   Белки, г
                 </p>
                 <p className="text text_type_digits-medium text_color_inactive">
                   {this.props.item.proteins}
                 </p>
               </div>
-              <div className={style.infoItem}>
-                <p className="text text_type_main-medium text_color_inactive">
+              <div className={`${style.infoItem} pr-5`}>
+                <p className="text text_type_main-default text_color_inactive">
                   Жиры, г
                 </p>
                 <p className="text text_type_digits-medium text_color_inactive">
                   {this.props.item.fat}
                 </p>
               </div>
-              <div className={style.infoItem}>
-                <p className="text text_type_main-medium text_color_inactive">
+              <div className={`${style.infoItem}`}>
+                <p className="text text_type_main-default text_color_inactive">
                   Углеводы, г
                 </p>
                 <p className="text text_type_digits-medium text_color_inactive">

@@ -3,18 +3,20 @@
 }
 .info {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 .infoItem {
-  justify-content: center;
+  height: 56px;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-
 .modal {
   position: fixed;
   border-radius: 40px;
-  height: 718px;
+  height: 539px;
   width: 720px;
   z-index: 6;
   top: 20%;

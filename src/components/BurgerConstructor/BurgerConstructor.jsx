@@ -42,7 +42,7 @@ export class BurgerConstructor extends React.Component {
               isLocked={true}
               text={this.data[0].name + " (Верх)"}
               price={this.data[0].price}
-              thumbnail={this.data[0].image_mobile}
+              thumbnail={this.data[0].image}
             />
           </div>
           <div className={style.burgerMiddle}>
@@ -60,7 +60,7 @@ export class BurgerConstructor extends React.Component {
               isLocked={true}
               text={this.data[this.data.length - 1].name + " (Низ)"}
               price={this.data[this.data.length - 1].price}
-              thumbnail={this.data[this.data.length - 1].image_mobile}
+              thumbnail={this.data[this.data.length - 1].image}
             />
           </div>
         </div>

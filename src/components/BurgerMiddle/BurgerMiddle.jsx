@@ -22,7 +22,7 @@ export default class BurgerMiddle extends React.Component {
         <ConstructorElement
           text={item.name}
           price={item.price}
-          thumbnail={item.image_mobile}
+          thumbnail={item.image}
         />
       </div>
     );
