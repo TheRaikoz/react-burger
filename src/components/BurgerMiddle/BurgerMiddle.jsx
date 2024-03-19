@@ -15,7 +15,7 @@ export default class BurgerMiddle extends React.Component {
   render() {
     const { item } = this.state;
     return (
-      <div className={`${style.container} pt-4`}>
+      <div className={`${style.container} pt-4 pr-3`}>
         <div className={style.burgerDrag}>
           <DragIcon type="primary" />
         </div>

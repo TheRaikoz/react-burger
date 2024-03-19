@@ -36,13 +36,15 @@ export class BurgerConstructor extends React.Component {
       <div className={`${style.container} pt-15`}>
         {this.state.visible && <OrderDetails onClick={this.handleCloseModal} />}
         <div>
-          <ConstructorElement
-            type="top"
-            isLocked={true}
-            text={this.data[0].name + " (Верх)"}
-            price={this.data[0].price}
-            thumbnail={this.data[0].image_mobile}
-          />
+          <div className={style.burgerTopBotom}>
+            <ConstructorElement
+              type="top"
+              isLocked={true}
+              text={this.data[0].name + " (Верх)"}
+              price={this.data[0].price}
+              thumbnail={this.data[0].image_mobile}
+            />
+          </div>
           <div className={style.burgerMiddle}>
             {this.data.map((item, index) => {
               if (index === 0) {
@@ -52,13 +54,15 @@ export class BurgerConstructor extends React.Component {
               }
             })}
           </div>
-          <ConstructorElement
-            type="bottom"
-            isLocked={true}
-            text={this.data[this.data.length - 1].name + " (Низ)"}
-            price={this.data[this.data.length - 1].price}
-            thumbnail={this.data[this.data.length - 1].image_mobile}
-          />
+          <div className={`${style.burgerTopBotom} pt-4`}>
+            <ConstructorElement
+              type="bottom"
+              isLocked={true}
+              text={this.data[this.data.length - 1].name + " (Низ)"}
+              price={this.data[this.data.length - 1].price}
+              thumbnail={this.data[this.data.length - 1].image_mobile}
+            />
+          </div>
         </div>
         <div className={`${style.price} pt-10 pr-10`}>
           <div className={style.priceContainer}>
