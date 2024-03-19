@@ -22,3 +22,6 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+.IngredientsTitle {
+  display: flex;
+}
