@@ -24,7 +24,12 @@ class App extends React.Component {
   fetchData = () => {
     this.setState({ isLoading: true });
     fetch(`${DOMAIN_URL}/api/ingredients`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(`Ошибка ${response.status}`);
+      })
       .then((data) =>
         this.setState({
           data: data.data,
