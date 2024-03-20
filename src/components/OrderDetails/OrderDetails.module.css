@@ -1,23 +1,9 @@
-.modal {
-  position: fixed;
-  border-radius: 40px;
-  height: 718px;
-  width: 720px;
-  z-index: 6;
-  top: 20%;
-  left: 30%;
-  background-color: #1c1c21;
-}
 .content {
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
   flex-direction: column;
-}
-.close {
-  display: flex;
-  flex-direction: row-reverse;
 }
 .orderNumber {
   color: #ffffff;

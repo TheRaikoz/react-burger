@@ -5,7 +5,7 @@ import {
 import style from "./TabItem.module.css";
 import React from "react";
 
-export default class tabItem extends React.Component {
+export default class TabItem extends React.Component {
   constructor(props) {
     super(props);
     this.img = props.img;

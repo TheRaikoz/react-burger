@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import style from "./Modal.module.css";
 import ModalOverlay from "../ModalOverlay/ModalOverlay";
+import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
 const modalRoot = document.getElementById("modals");
 
@@ -25,9 +26,13 @@ export default class Modal extends React.Component {
   render() {
     return ReactDOM.createPortal(
       <div>
-        {this.props.children}
+        <div className={style.modal}>
+          <div className={`${style.close} pt-10 pr-10`}>
+            <CloseIcon type="primary" onClick={this.props.onClose} />
+          </div>
+          {this.props.children}
+        </div>
         <ModalOverlay onClose={this.props.onClose} />
-        <input onKeyDown={() => console.log("key was pressed")} type="text" />
       </div>,
       modalRoot
     );

@@ -11,6 +11,7 @@ import { burgerPropTypes } from "../../utils/Types";
 import React from "react";
 import BurgerMiddle from "../BurgerMiddle/BurgerMiddle";
 import OrderDetails from "../OrderDetails/OrderDetails";
+import Modal from "../Modal/Modal";
 
 export class BurgerConstructor extends React.Component {
   constructor(props) {
@@ -34,7 +35,11 @@ export class BurgerConstructor extends React.Component {
   render() {
     return (
       <div className={`${style.container} pt-15`}>
-        {this.state.visible && <OrderDetails onClick={this.handleCloseModal} />}
+        {this.state.visible && (
+          <Modal onClose={this.handleCloseModal}>
+            <OrderDetails item={this.state.item} />
+          </Modal>
+        )}
         <div>
           <div className={style.burgerTopBotom}>
             <ConstructorElement

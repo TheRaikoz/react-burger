@@ -9,6 +9,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { burgerPropTypes } from "../../utils/Types";
 import IngredientDetails from "../IngredientDetails/IngredientDetails";
+import Modal from "../Modal/Modal";
 
 export class BurgerIngredients extends React.Component {
   constructor(props) {
@@ -48,10 +49,9 @@ export class BurgerIngredients extends React.Component {
     return (
       <div className={`${style.container} pt-10`}>
         {this.state.visible && (
-          <IngredientDetails
-            onClose={this.handleCloseModal}
-            item={this.state.item}
-          />
+          <Modal onClose={this.handleCloseModal}>
+            <IngredientDetails item={this.state.item} />
+          </Modal>
         )}
         <p className="text text_type_main-large">Соберите бургер</p>
 
