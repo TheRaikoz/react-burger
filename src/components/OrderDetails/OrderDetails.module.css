@@ -1,0 +1,14 @@
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+.orderNumber {
+  color: #ffffff;
+  text-shadow: 0 0 20px #4040fa, 0 0 80px #4141fd;
+}
+.done {
+  scale: 2;
+}
