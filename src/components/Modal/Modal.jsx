@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import style from "./Modal.module.css";
 import ModalOverlay from "../ModalOverlay/ModalOverlay";
 
-const modalRoot = document.getElementById("root");
+const modalRoot = document.getElementById("modals");
 
 export default class Modal extends React.Component {
   constructor(props) {
