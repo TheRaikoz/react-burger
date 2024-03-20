@@ -3,7 +3,7 @@ import {
   ConstructorElement,
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import style from "./BurgerMiddle.module.css";
+import Style from "./BurgerMiddle.module.css";
 import PropTypes from "prop-types";
 
 export default class BurgerMiddle extends React.Component {
@@ -12,8 +12,8 @@ export default class BurgerMiddle extends React.Component {
   }
   render() {
     return (
-      <div className={`${style.container} pt-4 pr-3`}>
-        <div className={style.burgerDrag}>
+      <div className={`${Style.container} pt-4 pr-3`}>
+        <div className={Style.burgerDrag}>
           <DragIcon type="primary" />
         </div>
         <ConstructorElement

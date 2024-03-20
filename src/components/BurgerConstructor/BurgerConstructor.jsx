@@ -5,7 +5,7 @@ import {
   CloseIcon,
   CheckMarkIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import style from "./BurgerConstructor.module.css";
+import Style from "./BurgerConstructor.module.css";
 import PropTypes from "prop-types";
 import { burgerPropTypes } from "../../utils/Types";
 import React from "react";
@@ -34,14 +34,14 @@ export class BurgerConstructor extends React.Component {
 
   render() {
     return (
-      <div className={`${style.container} pt-15`}>
+      <div className={`${Style.container} pt-15`}>
         {this.state.visible && (
           <Modal onClose={this.handleCloseModal}>
             <OrderDetails item={this.state.item} />
           </Modal>
         )}
         <div>
-          <div className={style.burgerTopBotom}>
+          <div className={Style.burgerTopBotom}>
             <ConstructorElement
               type="top"
               isLocked={true}
@@ -50,7 +50,7 @@ export class BurgerConstructor extends React.Component {
               thumbnail={this.data[0].image}
             />
           </div>
-          <div className={style.burgerMiddle}>
+          <div className={Style.burgerMiddle}>
             {this.data.map((item, index) => {
               if (index === 0) {
               } else if (index === this.data.length - 1) {
@@ -59,7 +59,7 @@ export class BurgerConstructor extends React.Component {
               }
             })}
           </div>
-          <div className={`${style.burgerTopBotom} pt-4`}>
+          <div className={`${Style.burgerTopBotom} pt-4`}>
             <ConstructorElement
               type="bottom"
               isLocked={true}
@@ -69,8 +69,8 @@ export class BurgerConstructor extends React.Component {
             />
           </div>
         </div>
-        <div className={`${style.price} pt-10 pr-10`}>
-          <div className={style.priceContainer}>
+        <div className={`${Style.price} pt-10 pr-10`}>
+          <div className={Style.priceContainer}>
             <p className="text text_type_main-large">
               {this.data.reduce((acc, item) => acc + item.price, 0)}
             </p>

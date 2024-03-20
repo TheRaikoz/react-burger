@@ -2,7 +2,7 @@ import {
   Counter,
   CurrencyIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import style from "./TabItem.module.css";
+import Style from "./TabItem.module.css";
 import React from "react";
 
 export default class TabItem extends React.Component {
@@ -15,16 +15,16 @@ export default class TabItem extends React.Component {
 
   render() {
     return (
-      <div className={style.container} onClick={this.props.onClick}>
-        <div className={style.counter}>
+      <div className={Style.container} onClick={this.props.onClick}>
+        <div className={Style.counter}>
           <Counter count={1} size="default" extraClass="m-1" />
         </div>
         <img
           src={this.img}
-          className={`${style.image} pl-4 pr-4`}
+          className={`${Style.image} pl-4 pr-4`}
           alt={this.name}
         ></img>
-        <div className={`${style.cost} p-1`}>
+        <div className={`${Style.cost} p-1`}>
           <p className="text text_type_main-small">{this.cost}</p>
           <CurrencyIcon type="primary" />
         </div>

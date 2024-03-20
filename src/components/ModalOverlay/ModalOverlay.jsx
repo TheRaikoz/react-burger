@@ -1,12 +1,11 @@
 import React from "react";
-import style from "./ModalOverlay.module.css";
-import Modal from "../Modal/Modal";
+import Style from "./ModalOverlay.module.css";
 
 export default class ModalOverlay extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
-    return <div onClick={this.props.onClose} className={style.container}></div>;
+    return <div onClick={this.props.onClose} className={Style.container}></div>;
   }
 }

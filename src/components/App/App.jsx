@@ -1,7 +1,7 @@
 import AppHeader from "../AppHeader/AppHeader";
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
-import style from "./App.module.css";
+import Style from "./App.module.css";
 import React from "react";
 
 const DOMAIN_URL = "https://norma.nomoreparties.space";
@@ -55,9 +55,9 @@ class App extends React.Component {
     const { data, items, isLoading, hasError, error, handleOpenModal } =
       this.state;
     return (
-      <div className={style.App}>
+      <div className={Style.App}>
         <AppHeader />
-        <main className={style.container}>
+        <main className={Style.container}>
           {CheckError({
             component: BurgerIngredients,
             burgerData: data,

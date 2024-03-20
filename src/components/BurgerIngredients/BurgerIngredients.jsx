@@ -1,9 +1,7 @@
 import {
   Tab,
-  CloseIcon,
-  CheckMarkIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import style from "./BurgerIngredients.module.css";
+import Style from "./BurgerIngredients.module.css";
 import TabItem from "../TabItem/TabItem";
 import React from "react";
 import PropTypes from "prop-types";
@@ -47,7 +45,7 @@ export class BurgerIngredients extends React.Component {
   render() {
     const { data, setTab, curentTab } = this.state;
     return (
-      <div className={`${style.container} pt-10`}>
+      <div className={`${Style.container} pt-10`}>
         {this.state.visible && (
           <Modal onClose={this.handleCloseModal}>
             <IngredientDetails item={this.state.item} />
@@ -55,7 +53,7 @@ export class BurgerIngredients extends React.Component {
         )}
         <p className="text text_type_main-large">Соберите бургер</p>
 
-        <div className={style.tabParent}>
+        <div className={Style.tabParent}>
           <Tab active={curentTab === "bun"} value="bun" onClick={setTab}>
             Булки
           </Tab>
@@ -66,13 +64,13 @@ export class BurgerIngredients extends React.Component {
             Начинки
           </Tab>
         </div>
-        <div className={style.IngredientsContainer}>
-          <div className={`${style.IngredientsTitle} pt-10 pb-6`}>
+        <div className={Style.IngredientsContainer}>
+          <div className={`${Style.IngredientsTitle} pt-10 pb-6`}>
             <p className="text text_type_main-medium" id={"bun"}>
               Булки
             </p>
           </div>
-          <div className={style.Ingredients}>
+          <div className={Style.Ingredients}>
             {data.map((item) => {
               if (item.type === "bun")
                 return (
@@ -86,12 +84,12 @@ export class BurgerIngredients extends React.Component {
                 );
             })}
           </div>
-          <div className={`${style.IngredientsTitle} pt-10 pb-6`}>
+          <div className={`${Style.IngredientsTitle} pt-10 pb-6`}>
             <p className="text text_type_main-medium" id={"sauce"}>
               Соусы
             </p>
           </div>
-          <div className={style.Ingredients}>
+          <div className={Style.Ingredients}>
             {data.map((item) => {
               if (item.type === "sauce")
                 return (
@@ -105,12 +103,12 @@ export class BurgerIngredients extends React.Component {
                 );
             })}
           </div>
-          <div className={`${style.IngredientsTitle} pt-10 pb-6`}>
+          <div className={`${Style.IngredientsTitle} pt-10 pb-6`}>
             <p className="text text_type_main-medium" id={"main"}>
               Начинки
             </p>
           </div>
-          <div className={style.Ingredients}>
+          <div className={Style.Ingredients}>
             {data.map((item) => {
               if (item.type === "main")
                 return (
