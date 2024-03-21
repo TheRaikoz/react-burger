@@ -1,14 +1,8 @@
 import React from "react";
-import {
-  CheckMarkIcon,
-} from "@ya.praktikum/react-developer-burger-ui-components";
 import Style from "./OrderDetails.module.css";
+import done from "../../images/done.svg";
 
 export default class OrderDetails extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="pt-15 pb-30 pr-15 pl-15">
@@ -20,7 +14,7 @@ export default class OrderDetails extends React.Component {
             идентификатор заказа
           </p>
           <div className={`${Style.done} pt-15`}>
-            <CheckMarkIcon type="primary" />
+            <img src={done} alt="done" />
           </div>
           <div className="pt-30">
             <p className="text text_type_main-medium">
