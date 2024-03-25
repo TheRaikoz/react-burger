@@ -1,6 +1,4 @@
-import {
-  Tab,
-} from "@ya.praktikum/react-developer-burger-ui-components";
+import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import Style from "./BurgerIngredients.module.css";
 import TabItem from "../TabItem/TabItem";
 import React from "react";
