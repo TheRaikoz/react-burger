@@ -46,7 +46,6 @@ export function BurgerConstructor() {
         <div className={Style.burgerMiddle}>
           {items.map((item, index) => {
             if (index === 0) {
-            } else if (index === items.length - 1) {
             } else {
               return <BurgerMiddle item={item} key={index} />;
             }
@@ -56,17 +55,19 @@ export function BurgerConstructor() {
           <ConstructorElement
             type="bottom"
             isLocked={true}
-            text={items[items.length - 1].name + " (Низ)"}
-            price={items[items.length - 1].price}
-            thumbnail={items[items.length - 1].image}
+            text={items[0].name + " (Низ)"}
+            price={items[0].price}
+            thumbnail={items[0].image}
           />
         </div>
       </div>
       <div className={`${Style.price} pt-10 pr-10`}>
         <div className={Style.priceContainer}>
           <p className="text text_type_main-large">
-            {React.useMemo(() =>
-              items.reduce((acc, item) => acc + item.price, 0)
+            {React.useMemo(
+              () =>
+                items.reduce((acc, item) => acc + item.price, 0) +
+                items[0].price
             )}
           </p>
           <CurrencyIcon type="primary" />

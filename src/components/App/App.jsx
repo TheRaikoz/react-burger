@@ -16,6 +16,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
+    setItems([data[0], data[1], data[2], data[3]]); //Временно добавляю индигриенты
   }, []);
 
   function fetchData() {
@@ -30,7 +31,6 @@ function App() {
       .then((data) => {
         setData(data.data);
         setIsLoading(false);
-        setItems([data.data[0]]);
       })
       .catch((error) => {
         setError(error);
