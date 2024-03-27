@@ -7,9 +7,6 @@ import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 const modalRoot = document.getElementById("modals");
 
 export default class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     window.addEventListener("keydown", this.handleKeyDown);
   }
