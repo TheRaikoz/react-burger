@@ -4,8 +4,7 @@ import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import Style from "./App.module.css";
 import React, { useEffect } from "react";
 import { BurgerContext } from "../../services/BurgerContext";
-
-const DOMAIN_URL = "https://norma.nomoreparties.space";
+import BASE_URL from "../../utils/Url";
 
 function ingredientsReducer(state, action) {
   switch (action.type) {
@@ -31,7 +30,7 @@ function App() {
 
   function fetchData() {
     setIsLoading(true);
-    fetch(`${DOMAIN_URL}/api/ingredients`)
+    fetch(`${BASE_URL}/api/ingredients`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -53,7 +52,9 @@ function App() {
     <div className={Style.App}>
       <AppHeader />
       {isLoading && <p className="text text_type_main-default">Загрузка...</p>}
-      {hasError && <p className="text text_type_main-default">Ошибка: {error}</p>}
+      {hasError && (
+        <p className="text text_type_main-default">Ошибка: {error}</p>
+      )}
       {!isLoading && !hasError && (
         <main className={Style.container}>
           <BurgerContext.Provider value={{ ingredients }}>

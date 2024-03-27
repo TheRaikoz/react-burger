@@ -11,8 +11,7 @@ import Modal from "../Modal/Modal";
 import { BurgerContext } from "../../services/BurgerContext";
 import { useState, useContext, useReducer, useEffect } from "react";
 import { BurgerPlaceHolder } from "../BurgerPlaceHolder/BurgerPlaceHolder";
-
-const DOMAIN_URL = "https://norma.nomoreparties.space";
+import BASE_URL from "../../utils/Url";
 
 const constructorInitialState = {
   bun: null,
@@ -65,7 +64,7 @@ export function BurgerConstructor() {
   }, [constructorData.ingredients]);
 
   function handleOpenModal() {
-    fetch(`${DOMAIN_URL}/api/orders`, {
+    fetch(`${BASE_URL}/api/orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
