@@ -4,7 +4,7 @@ import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import Style from "./App.module.css";
 import React, { useEffect } from "react";
 import { BurgerContext } from "../../services/BurgerContext";
-import BASE_URL from "../../utils/Url";
+import { Request } from "../../utils/Request";
 
 function ingredientsReducer(state, action) {
   switch (action.type) {
@@ -30,22 +30,17 @@ function App() {
 
   function fetchData() {
     setIsLoading(true);
-    fetch(`${BASE_URL}/api/ingredients`)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(`Ошибка ${response.status}`);
-      })
+    Request("/api/ingredients", null)
       .then((data) => {
         setIngredients({ type: "set", value: data.data });
-        setIsLoading(false);
       })
       .catch((error) => {
         setError(error);
         setHasError(true);
-        setIsLoading(false);
         console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }
   return (
@@ -53,7 +48,9 @@ function App() {
       <AppHeader />
       {isLoading && <p className="text text_type_main-default">Загрузка...</p>}
       {hasError && (
-        <p className="text text_type_main-default">Ошибка: {error}</p>
+        <p className="text text_type_main-default mr-25 ml-25">
+          Ошибка: {error.message}
+        </p>
       )}
       {!isLoading && !hasError && (
         <main className={Style.container}>

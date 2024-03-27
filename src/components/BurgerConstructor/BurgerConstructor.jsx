@@ -11,7 +11,7 @@ import Modal from "../Modal/Modal";
 import { BurgerContext } from "../../services/BurgerContext";
 import { useState, useContext, useReducer, useEffect } from "react";
 import { BurgerPlaceHolder } from "../BurgerPlaceHolder/BurgerPlaceHolder";
-import BASE_URL from "../../utils/Url";
+import { Request } from "../../utils/Request";
 
 const constructorInitialState = {
   bun: null,
@@ -64,7 +64,7 @@ export function BurgerConstructor() {
   }, [constructorData.ingredients]);
 
   function handleOpenModal() {
-    fetch(`${BASE_URL}/api/orders`, {
+    Request("/api/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -75,9 +75,7 @@ export function BurgerConstructor() {
         ),
       }),
     })
-      .then((response) => response.json())
       .then((response) => {
-        console.log(response);
         constructorDispatch({
           type: "setOrderNumber",
           value: response.order.number,
