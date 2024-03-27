@@ -1,37 +1,39 @@
-import React from "react";
 import ReactDOM from "react-dom";
 import Style from "./Modal.module.css";
 import ModalOverlay from "../ModalOverlay/ModalOverlay";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { useEffect } from "react";
 
 const modalRoot = document.getElementById("modals");
-
-export default class Modal extends React.Component {
-  componentDidMount() {
-    window.addEventListener("keydown", this.handleKeyDown);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("keydown", this.handleKeyDown);
-  }
-
-  handleKeyDown = (event) => {
+export default function Modal({ children, onClose }) {
+  const handleKeyDown = (event) => {
     if (event.key === "Escape") {
-      this.props.onClose();
+      onClose();
     }
   };
-  render() {
-    return ReactDOM.createPortal(
-      <div>
-        <div className={Style.modal}>
-          <div className={`${Style.close} pt-10 pr-10`}>
-            <CloseIcon type="primary" onClick={this.props.onClose} />
-          </div>
-          {this.props.children}
+
+  useEffect(() => {
+    function closeByEscape(evt) {
+      if (evt.key === "Escape") {
+        onClose();
+      }
+    }
+    document.addEventListener("keydown", closeByEscape);
+    return () => {
+      document.removeEventListener("keydown", closeByEscape);
+    };
+  }, []);
+
+  return ReactDOM.createPortal(
+    <div>
+      <div className={Style.modal}>
+        <div className={`${Style.close} pt-10 pr-10`}>
+          <CloseIcon type="primary" onClick={onClose} />
         </div>
-        <ModalOverlay onClose={this.props.onClose} />
-      </div>,
-      modalRoot
-    );
-  }
+        {children}
+      </div>
+      <ModalOverlay onClose={onClose} />
+    </div>,
+    modalRoot
+  );
 }
