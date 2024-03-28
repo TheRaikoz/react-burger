@@ -4,7 +4,7 @@ import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import Style from "./App.module.css";
 import React, { useEffect } from "react";
 import { BurgerContext } from "../../services/BurgerContext";
-import { Request } from "../../utils/Request";
+import { request } from "../../utils/Request";
 
 function ingredientsReducer(state, action) {
   switch (action.type) {
@@ -30,7 +30,7 @@ function App() {
 
   function fetchData() {
     setIsLoading(true);
-    Request("/api/ingredients", null)
+    request("/api/ingredients", null)
       .then((data) => {
         setIngredients({ type: "set", value: data.data });
       })
