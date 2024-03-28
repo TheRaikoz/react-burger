@@ -1,77 +1,90 @@
-import {
-  Tab,
-} from "@ya.praktikum/react-developer-burger-ui-components";
+import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import Style from "./BurgerIngredients.module.css";
 import TabItem from "../TabItem/TabItem";
 import React from "react";
+import { useState, useContext, useReducer, useEffect } from "react";
 import PropTypes from "prop-types";
 import { burgerPropTypes } from "../../utils/Types";
 import IngredientDetails from "../IngredientDetails/IngredientDetails";
 import Modal from "../Modal/Modal";
+import { BurgerContext } from "../../services/BurgerContext";
 
-export class BurgerIngredients extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: props.data,
-      curentTab: "bun",
-      setTab: this.setTab,
-      visible: false,
-      item: null,
-    };
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
+const ingredientsInitialState = {
+  ingredients: [],
+  item: null,
+};
+function ingredientsReducer(state, action) {
+  switch (action.type) {
+    case "setItem":
+      return { ...state, item: action.value };
+    case "setIngredients":
+      return { ...state, ingredients: action.value };
+    default:
+      throw new Error("Неверный тип");
   }
+}
 
-  handleOpenModal(id) {
-    const item = this.state.data.find((item) => item._id === id);
-    this.setState({ item: item });
-    this.setState({ visible: true });
+export function BurgerIngredients() {
+  const { ingredients } = React.useContext(BurgerContext);
+  const [curentTab, setCurentTab] = React.useState("bun");
+  const [visible, setVisible] = React.useState(false);
+
+  const [ingredientsData, ingredientsDispatch] = useReducer(
+    ingredientsReducer,
+    ingredientsInitialState
+  );
+
+  useEffect(() => {
+    ingredientsDispatch({
+      type: "setIngredients",
+      value: ingredients,
+    });
+  }, [ingredients]);
+
+  function handleOpenModal(id) {
+    const item = ingredientsData.ingredients.find((item) => item._id === id);
+    ingredientsDispatch({
+      type: "setItem",
+      value: item,
+    });
+    setVisible(true);
   }
-  handleCloseModal() {
-    this.setState({ visible: false });
+  function handleCloseModal() {
+    setVisible(false);
   }
-
-  setCurentTab = (tab) => {
-    this.setState({ curentTab: tab });
-    console.log(this.curentTab);
-  };
-
-  setTab = (tab) => {
-    this.setCurentTab(tab);
+  function setTab(tab) {
+    setCurentTab(tab);
     const element = document.getElementById(tab);
     if (element) element.scrollIntoView({ behavior: "smooth" });
-  };
-  render() {
-    const { data, setTab, curentTab } = this.state;
-    return (
-      <div className={`${Style.container} pt-10`}>
-        {this.state.visible && (
-          <Modal onClose={this.handleCloseModal}>
-            <IngredientDetails item={this.state.item} />
-          </Modal>
-        )}
-        <p className="text text_type_main-large">Соберите бургер</p>
-
-        <div className={Style.tabParent}>
-          <Tab active={curentTab === "bun"} value="bun" onClick={setTab}>
+  }
+  return (
+    <div className={`${Style.container} pt-10`}>
+      {visible && (
+        <Modal onClose={handleCloseModal}>
+          <IngredientDetails item={ingredientsData.item} />
+        </Modal>
+      )}
+      <p className="text text_type_main-large">Соберите бургер</p>
+      <div className={Style.tabParent}>
+        <Tab active={curentTab === "bun"} value="bun" onClick={setTab}>
+          Булки
+        </Tab>
+        <Tab active={curentTab === "sauce"} value="sauce" onClick={setTab}>
+          Соусы
+        </Tab>
+        <Tab active={curentTab === "main"} value="main" onClick={setTab}>
+          Начинки
+        </Tab>
+      </div>
+      <div className={Style.IngredientsContainer}>
+        <div className={`${Style.IngredientsTitle} pt-10 pb-6`}>
+          <p className="text text_type_main-medium" id={"bun"}>
             Булки
-          </Tab>
-          <Tab active={curentTab === "sauce"} value="sauce" onClick={setTab}>
-            Соусы
-          </Tab>
-          <Tab active={curentTab === "main"} value="main" onClick={setTab}>
-            Начинки
-          </Tab>
+          </p>
         </div>
-        <div className={Style.IngredientsContainer}>
-          <div className={`${Style.IngredientsTitle} pt-10 pb-6`}>
-            <p className="text text_type_main-medium" id={"bun"}>
-              Булки
-            </p>
-          </div>
-          <div className={Style.Ingredients}>
-            {data.map((item) => {
+        <div className={Style.Ingredients}>
+          {ingredientsData.ingredients?.length ? (
+            ingredientsData.ingredients.map((item) => {
               if (item.type === "bun")
                 return (
                   <TabItem
@@ -79,18 +92,22 @@ export class BurgerIngredients extends React.Component {
                     img={item.image}
                     cost={item.price}
                     name={item.name}
-                    onClick={() => this.handleOpenModal(item._id)}
+                    onClick={() => handleOpenModal(item._id)}
                   />
                 );
-            })}
-          </div>
-          <div className={`${Style.IngredientsTitle} pt-10 pb-6`}>
-            <p className="text text_type_main-medium" id={"sauce"}>
-              Соусы
-            </p>
-          </div>
-          <div className={Style.Ingredients}>
-            {data.map((item) => {
+            })
+          ) : (
+            <p>Товар закончился</p>
+          )}
+        </div>
+        <div className={`${Style.IngredientsTitle} pt-10 pb-6`}>
+          <p className="text text_type_main-medium" id={"sauce"}>
+            Соусы
+          </p>
+        </div>
+        <div className={Style.Ingredients}>
+          {ingredientsData.ingredients?.length ? (
+            ingredientsData.ingredients.map((item) => {
               if (item.type === "sauce")
                 return (
                   <TabItem
@@ -98,18 +115,22 @@ export class BurgerIngredients extends React.Component {
                     img={item.image}
                     cost={item.price}
                     name={item.name}
-                    onClick={() => this.handleOpenModal(item._id)}
+                    onClick={() => handleOpenModal(item._id)}
                   />
                 );
-            })}
-          </div>
-          <div className={`${Style.IngredientsTitle} pt-10 pb-6`}>
-            <p className="text text_type_main-medium" id={"main"}>
-              Начинки
-            </p>
-          </div>
-          <div className={Style.Ingredients}>
-            {data.map((item) => {
+            })
+          ) : (
+            <p>Товар закончился</p>
+          )}
+        </div>
+        <div className={`${Style.IngredientsTitle} pt-10 pb-6`}>
+          <p className="text text_type_main-medium" id={"main"}>
+            Начинки
+          </p>
+        </div>
+        <div className={Style.Ingredients}>
+          {ingredientsData.ingredients?.length ? (
+            ingredientsData.ingredients.map((item) => {
               if (item.type === "main")
                 return (
                   <TabItem
@@ -117,19 +138,17 @@ export class BurgerIngredients extends React.Component {
                     img={item.image}
                     cost={item.price}
                     name={item.name}
-                    onClick={() => this.handleOpenModal(item._id)}
+                    onClick={() => handleOpenModal(item._id)}
                   />
                 );
-            })}
-          </div>
+            })
+          ) : (
+            <p>Товар закончился</p>
+          )}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default BurgerIngredients;
-
-BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(burgerPropTypes).isRequired,
-};
